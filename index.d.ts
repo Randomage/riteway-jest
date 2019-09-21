@@ -4,7 +4,7 @@ declare module 'riteway' {
   interface Assertion<T> {
     readonly given: any;
     readonly should: string;
-    readonly actual: T;
+    readonly actual: T | Promise<T>;
     readonly expected: T;
   }
 }

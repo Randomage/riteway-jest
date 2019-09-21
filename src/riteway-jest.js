@@ -4,8 +4,9 @@ const assert = ({
   actual = undefined,
   expected = undefined,
 } = {}) => {
-  it(`given ${given}: should ${should}`, () => {
-    expect(actual).toEqual(expected);
+  it(`given ${given}: should ${should}`, async () => {
+    const resolvedActual = await Promise.resolve(actual);
+    expect(resolvedActual).toEqual(expected);
   });
 };
 
@@ -15,8 +16,9 @@ assert.skip = ({
   actual = undefined,
   expected = undefined,
 } = {}) => {
-  it.skip(`given ${given}: should ${should}`, () => {
-    expect(actual).toEqual(expected);
+  it.skip(`given ${given}: should ${should}`, async () => {
+    const resolvedActual = await Promise.resolve(actual);
+    expect(resolvedActual).toEqual(expected);
   });
 };
 
@@ -26,8 +28,9 @@ assert.only = ({
   actual = undefined,
   expected = undefined,
 } = {}) => {
-  it.only(`given ${given}: should ${should}`, () => {
-    expect(actual).toEqual(expected);
+  it.only(`given ${given}: should ${should}`, async () => {
+    const resolvedActual = await Promise.resolve(actual);
+    expect(resolvedActual).toEqual(expected);
   });
 };
 

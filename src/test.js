@@ -34,6 +34,40 @@ describe('sum()', () => {
   });
 });
 
+const asyncSum = (a = 0, b = 0) => new Promise(r => setTimeout(r(a + b), 10));
+
+describe('asyncSum()', () => {
+  const should = 'return the correct sum';
+
+  assert.skip({
+    given: 'undefined',
+    should: 'explicitly skip this test',
+    actual: asyncSum(undefined),
+    expected: null,
+  });
+
+  assert({
+    given: 'no arguments',
+    should: 'return 0',
+    actual: asyncSum(),
+    expected: 0,
+  });
+
+  assert({
+    given: 'zero',
+    should,
+    actual: asyncSum(2, 0),
+    expected: 2,
+  });
+
+  assert({
+    given: 'negative numbers',
+    should,
+    actual: asyncSum(1, -4),
+    expected: -3,
+  });
+});
+
 describe('skip()', () => {
   test('it skips the function', () => {
     it.skip = jest.fn();
